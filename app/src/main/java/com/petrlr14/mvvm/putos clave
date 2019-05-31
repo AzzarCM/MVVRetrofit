@@ -1,0 +1,22 @@
+hacer interfaz para retrofit con metodos GET
+
+@GET ("users/{user}/repos)
+fun getRepos(@Path("user) user: String): Deferred<Response<List<GitHubRepo>>> 
+
+githubrepo es mi entidad
+deferred funcion asincrona
+
+hacer URL base
+
+const val GITHUB_BASE_URL = "http://api.github.com/"
+
+cambiar en entidad el nombre con respecto al JSON que viene desde la API
+@PrimaryKey
+@fiel:Json(name="name")
+
+
+de nuevo en la interfaz
+creamos un campanion object para poner la url base y parsear los elemenotos 
+y convertirlos a elementos del tipo que estas ocupando en tu app
+
+NECESITABA LA VERSION 3.4 DE ANDROID STUDIO ASI QUE SOLO VI :(
