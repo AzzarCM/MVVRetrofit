@@ -4,6 +4,9 @@ import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import com.petrlr14.mvvm.database.daos.GitHubDAO
 import com.petrlr14.mvvm.database.entities.GitHubRepo
+import com.petrlr14.mvvm.services.GithubService
+import kotlinx.coroutines.Deferred
+import retrofit2.Response
 
 class GitHubRepoRepository (private val repoDao:GitHubDAO){
 
@@ -20,5 +23,10 @@ class GitHubRepoRepository (private val repoDao:GitHubDAO){
     suspend fun nuke(){
         return repoDao.nukeTable()
     }
+
+    fun retrieveReposAsync(user:String): Deferred<Response<List<GitHubRepo>>>{
+        return GithubService.getRetrofit().getRepos(user)
+    }
+
 
 }
